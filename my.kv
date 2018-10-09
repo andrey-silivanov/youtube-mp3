@@ -1,0 +1,40 @@
+#: import os os
+
+<Root>:
+   BoxLayout:
+      id: test
+      spacing: 10
+      FileChooser:
+         id: fc
+         canvas.before:
+            Color:
+               rgb: .48, .46, .46
+            Rectangle:
+               pos: self.pos
+               size: self.size
+         size_hint: (.5, 1)
+         path: os.curdir
+         FileChooserListLayout
+
+      BoxLayout:
+         orientation: 'vertical'
+         padding: 10
+
+         BoxLayout:
+            orientation: 'vertical'
+            Label:
+               text:'Введите url'
+            TextInput:
+               id: form
+               size_hint: (1, None)
+               font_size: 25
+               height: 40
+               multiline: False
+
+
+         Button:
+            text: 'Download'
+            size_hint_y: None
+            on_press:
+               root.download(form.text, fc.path)
+
